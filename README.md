@@ -1,18 +1,31 @@
-# scaffold
+# Scaffold
 
 Scaffold is a Golang compile-time plugin framework.
+The project was inspired by this [blog post](https://eli.thegreenplace.net/2021/plugins-in-go)
 
 [[__TOC__]]
 
 ## Install
 
 ```shell
-go get -U github.com/pedregon/scaffold
+go get -U github.com/pedregon/scaffold@latest
 ```
 
 ## Usage
 
-Example.
+### Specification
+
+### Plugins
+
+### Discovery
+
+### Registration
+
+### Mounting
+
+### Loaders
+
+### Dependencies
 
 ## Contributing
 
@@ -20,4 +33,4 @@ For guidance on setting up a development environment and how to make a contribut
 
 ## Reporting a Security Vulnerability
 
-See the [security policy](SECURITY.md).
+See our [security policy](SECURITY.md).
