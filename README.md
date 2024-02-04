@@ -5,7 +5,7 @@ Scaffold is a Golang compile-time plugin framework inspired by this [blog post](
 ## Install
 
 ```shell
-go get -U github.com/pedregon/scaffold@latest
+go get -u github.com/pedregon/scaffold@latest
 ```
 
 ## Usage
