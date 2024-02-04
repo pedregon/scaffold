@@ -6,7 +6,7 @@ The project was inspired by this [blog post](https://eli.thegreenplace.net/2021/
 ## Install
 
 ```shell
-go get -U github.com/pedregon/scaffold@latest
+go get -u github.com/pedregon/scaffold@latest
 ```
 
 ## Usage
