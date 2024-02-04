@@ -2,8 +2,6 @@
 
 Please refer to the [license](LICENSE) before making changes.
 
-[[_TOC_]]
-
 ## Issues
 
 Issues are tracked in [GitHub](https://github.com/pedregon/scaffold/issues).
@@ -30,6 +28,8 @@ just -l
 
 We use [covenvtional commits](https://www.conventionalcommits.org/).
 Please see [`cliff.toml`](cliff.toml) for our supported commit styles.
+
+[!Important]
 All commits should be [signed](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
 
 ## Versioning
