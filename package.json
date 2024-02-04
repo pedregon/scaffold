@@ -1,0 +1,9 @@
+{
+  "description": "For running markdownlint.",
+  "scripts": {
+    "markdownlint": "node node_modules/markdownlint-cli/markdownlint.js"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.39.0"
+  }
+}
