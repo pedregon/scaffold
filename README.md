@@ -2,7 +2,7 @@
 
 Scaffold is a Golang compile-time plugin framework.
 
-[[_TOC_]]
+[[__TOC__]]
 
 ## Install
 
