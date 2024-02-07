@@ -1,5 +1,7 @@
-// Package scaffold is a compile-time plugin framework for building extendable applications. Scaffold encourages
-// inversion of control via a generic specification. A Registrar may be initialized with a specification.
+// Package scaffold is a compile-time plugin framework for building extensible applications.
+
+// Scaffold encourages inversion of control via a generic Hook specifications.
+// This library was inspired by https://eli.thegreenplace.net/2021/plugins-in-go.
 package scaffold
 
 import (
@@ -9,18 +11,17 @@ import (
 )
 
 type (
-	// scaffoldold is a plugin manager.
+	// Scaffold is a plugin manager/registrar.
 	Scaffold[T any] struct {
 		mu      sync.RWMutex
 		plugins map[string]*plugin[T]
-		app     T
 	}
 	// Dependency is a Plugin dependency relationship.
 	Dependency struct {
 		To   string
 		From string
 	}
-	// Info is scaffoldold information about a Plugin.
+	// Info is scaffold information about a Plugin.
 	Info struct {
 		Name         string
 		Runtime      time.Duration
@@ -28,11 +29,10 @@ type (
 	}
 )
 
-// New initializes a scaffoldold for an application.
-func New[T any](app T) *Scaffold[T] {
+// New initializes a scaffold for an application.
+func New[T any]() *Scaffold[T] {
 	return &Scaffold[T]{
 		plugins: make(map[string]*plugin[T]),
-		app:     app,
 	}
 }
 
@@ -48,7 +48,7 @@ func (scaffold *Scaffold[T]) Register(plg Plugin[T]) {
 
 // Load loads registered Plugin(s) for an application.
 func (scaffold *Scaffold[T]) Load(ctx context.Context, app T, loaders ...Loader) error {
-	c := newContext[T](ctx, scaffold, loaders...)
+	c := newContext[T](ctx, scaffold, app, loaders...)
 	scaffold.mu.RLock()
 	defer scaffold.mu.RUnlock()
 	for _, plg := range scaffold.plugins {
@@ -59,8 +59,8 @@ func (scaffold *Scaffold[T]) Load(ctx context.Context, app T, loaders ...Loader)
 	return nil
 }
 
-// Open retrieves Info about a plugin.
-func (scaffold *Scaffold[T]) Open(name string) (Info, bool) {
+// Lookup retrieves Info about a plugin.
+func (scaffold *Scaffold[T]) Lookup(name string) (Info, bool) {
 	scaffold.mu.RLock()
 	defer scaffold.mu.RUnlock()
 	plg, ok := scaffold.plugins[name]
@@ -85,8 +85,8 @@ func (dep Dependency) String() string {
 	return dep.From + "->" + dep.To
 }
 
-// Len returns the number of registered plugins in a Registrar.
-func Len[T any](scaffold *Scaffold[T]) (i int) {
+// Count returns the number of registered plugins in a Scaffold.
+func Count[T any](scaffold *Scaffold[T]) (i int) {
 	scaffold.mu.RLock()
 	defer scaffold.mu.RUnlock()
 	for range scaffold.plugins {

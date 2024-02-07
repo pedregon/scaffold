@@ -24,7 +24,7 @@ pre-commit:
 	pre-commit run --all-files
 
 bump version=current:
-	git cliff --unreleased --tag {{version}} -o CHANGELOG.md
+	git cliff --tag {{version}} -o CHANGELOG.md
 
 release:
 	@echo 'Release!'

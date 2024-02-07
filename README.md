@@ -1,7 +1,6 @@
 # Scaffold
 
-Scaffold is a Golang compile-time plugin framework.
-The project was inspired by this [blog post](https://eli.thegreenplace.net/2021/plugins-in-go)
+Scaffold is a Golang compile-time plugin framework inspired by this [blog post](https://eli.thegreenplace.net/2021/plugins-in-go).
 
 [[__TOC__]]
 
@@ -13,7 +12,13 @@ go get -U github.com/pedregon/scaffold@latest
 
 ## Usage
 
-### Specification
+### Application
+
+#### Hooks
+
+The `Hook` and `TaggedHook` implementations are forked from [`github.com/pocketbase/pocketbase`](https://github.com/pocketbase/pocketbase/tree/master/tools/hook).
+
+#### Tagged Hooks
 
 ### Plugins
 
@@ -29,7 +34,7 @@ go get -U github.com/pedregon/scaffold@latest
 
 ## Contributing
 
-For guidance on setting up a development environment and how to make a contribution, see [here](CONTRIBUTING.md).
+For guidance on setting up a development environment and how to make a contribution, please refer to this [document](CONTRIBUTING.md).
 
 ## Reporting a Security Vulnerability
 

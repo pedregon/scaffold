@@ -19,16 +19,18 @@ type (
 		loaders  []Loader
 		stack    *stack.Stack[string]
 		scaffold *Scaffold[T]
+		App      T
 	}
 )
 
 // newContext initializes a Context with a variadic of Loader(s).
-func newContext[T any](ctx context.Context, scaffold *Scaffold[T], loaders ...Loader) Context[T] {
+func newContext[T any](ctx context.Context, scaffold *Scaffold[T], app T, loaders ...Loader) Context[T] {
 	return Context[T]{
 		Context:  ctx,
 		loaders:  loaders,
 		stack:    stack.New[string](),
 		scaffold: scaffold,
+		App:      app,
 	}
 }
 
